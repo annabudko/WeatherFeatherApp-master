@@ -8,7 +8,7 @@ export interface Forecast {
   clouds: Clouds;
   dt: number;
   sys: SystemInfo;
-  timezone: -25200;
+  timezone: number;
   id: number;
   name: string;
   cod: number;
