@@ -18,7 +18,7 @@ export class ForecastService {
   constructor(private http: HttpService) {
   }
 
-  private getCurrentWeatherByCityName(cityName: string, stateCode?: string, countryCode?: string): Observable<Forecast> {
+  public getCurrentWeatherByCityName(cityName: string, stateCode?: string, countryCode?: string): Observable<Forecast> {
     let params = cityName;
     params = stateCode ? `${params},${stateCode}` : params;
     params = countryCode ? `${params},${countryCode}` : params;
@@ -28,21 +28,17 @@ export class ForecastService {
           .set('q', params)
           .set('appid', this.apiKey)
       };
-    return this.getCurrentWeather(options);
+    return this.http.get(this.apiURL, options);
   }
 
-  private getCurrentWeatherByLocation(lat: string, lon: string): Observable<Forecast> {
+  public getCurrentWeatherByLocation(lat: number, lon: number): Observable<Forecast> {
     const options =
       {
         params: new HttpParams()
-          .set('lat', lat)
-          .set('lon', lon)
+          .set('lat', lat.toString())
+          .set('lon', lon.toString())
           .set('appid', this.apiKey)
       };
-    return this.getCurrentWeather(options);
-  }
-
-  private getCurrentWeather(options: { params: HttpParams }): Observable<Forecast> {
     return this.http.get(this.apiURL, options);
   }
 

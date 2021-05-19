@@ -6,10 +6,11 @@ import {AppComponent} from './app.component';
 import {WeatherBoardComponent} from './modules/weather-board/weather-board.component';
 import {WheatherBoardModule} from './modules/weather-board/wheather-board.module';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
-import { MenuComponent } from './modules/menu/menu.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { StartComponent } from './start/start.component';
+import {MenuComponent} from './modules/menu/menu.component';
+import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
+import {StartComponent} from './start/start.component';
 import {HttpErrorInterceptor} from './http-error.interceptor';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -21,8 +22,9 @@ import {HttpErrorInterceptor} from './http-error.interceptor';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    BrowserAnimationsModule,
     WheatherBoardModule,
+    AppRoutingModule,
     HttpClientModule
   ],
   providers: [
