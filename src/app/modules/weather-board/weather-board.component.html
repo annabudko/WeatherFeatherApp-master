@@ -1,15 +1,42 @@
 <!--<p>{{currentDate | date:'EEE, MMM d, h:mm:ss a z' }}</p>-->
-<div class="wheather-panel">
-  <div>
-<!--    <image></image>-->
+<div class="flex weather-panel" *ngIf="forecast as fc">
+  <div class="flex separated-block main-info">
+    <div class="icon-block">
+      <img class="icon" src="https://openweathermap.org/img/wn/{{fc.weather[0].icon}}@2x.png"/>
+      <p>{{fc.weather[0].description}}</p>
+    </div>
+    <div class="column temperature-block">
+      <div class="flex space-between">
+        <div>{{fc.main.temp_min | temperature}}</div>
+        <div>{{fc.main.temp_max | temperature}}</div>
+      </div>
+      <div class="main-temp">
+        {{fc.main.temp | temperature}}
+      </div>
+      <div>
+        feels like {{fc.main.feels_like | temperature}}
+      </div>
+    </div>
   </div>
-  <div>
-
+  <div class="flex separated-block info-block">
+    <div class="column">
+      <div>Visibility:</div>
+      <div>Pressure:</div>
+      <div>Humidity:</div>
+    </div>
+    <div class="column">
+      <div>{{fc.visibility | mkm }}</div>
+      <div>{{fc.main.pressure| pressure}}</div>
+      <div>{{fc.main.humidity.toString().concat('%')}}</div>
+    </div>
   </div>
-  <div>
-
+  <div class="separated-block">
+    <p class="header">Wind</p>
+    {{fc.wind.speed}}
   </div>
-  <div>
-
+  <div class="separated-block">
+    <p class="header">Precipitations</p>
+    {{fc.wind.speed}}
   </div>
 </div>
+<!--<img>-->

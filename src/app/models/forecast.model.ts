@@ -1,9 +1,9 @@
 export interface Forecast {
   coord: Coordinates;
-  weather: Weather;
+  weather: Weather[];
   base: string;
   main: MainInfo;
-  visibility: string;
+  visibility: number;
   wind: Wind;
   clouds: Clouds;
   dt: number;
@@ -33,12 +33,13 @@ interface Clouds {
 }
 
 interface Wind {
-  lon: number;
-  lat: number;
+  deg: number;
+  gust: number;
+  speed: number;
 }
 
 interface Weather {
-  id: string;
+  id: number;
   main: string;
   description: string;
   icon: string;

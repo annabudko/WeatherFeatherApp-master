@@ -11,6 +11,11 @@ import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {StartComponent} from './start/start.component';
 import {HttpErrorInterceptor} from './http-error.interceptor';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ForecastComponent} from './modules/forecast/forecast.component';
+import {MToKmPipe} from './pipes/m-to-km.pipe';
+import {PressurePipe} from './pipes/pressure.pipe';
+import {TemperaturePipe} from './pipes/temperature.pipe';
+import {SpeedPipe} from './pipes/speed.pipe';
 
 @NgModule({
   declarations: [
@@ -18,7 +23,12 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     WeatherBoardComponent,
     MenuComponent,
     PageNotFoundComponent,
-    StartComponent
+    StartComponent,
+    ForecastComponent,
+    MToKmPipe,
+    PressurePipe,
+    TemperaturePipe,
+    SpeedPipe
   ],
   imports: [
     BrowserModule,

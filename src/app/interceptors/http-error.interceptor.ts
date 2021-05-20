@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {
   HttpRequest,
   HttpHandler,
@@ -11,7 +11,8 @@ import {catchError, retry} from 'rxjs/operators';
 @Injectable()
 export class HttpErrorInterceptor implements HttpInterceptor {
 
-  constructor() {}
+  constructor() {
+  }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     return next.handle(request).pipe(
@@ -28,7 +29,7 @@ export class HttpErrorInterceptor implements HttpInterceptor {
         }
 
         window.alert(errorMessage);
-
+        console.log(errorMessage);
         return throwError(errorMessage);
       })
     );
