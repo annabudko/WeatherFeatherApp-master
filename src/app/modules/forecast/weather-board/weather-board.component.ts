@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {Forecast} from '../../models/forecast.model';
-import {LocationService} from '../../services/location.service';
-import {ForecastService} from '../../services/forecast.service';
-import {MToKmPipe} from '../../pipes/m-to-km.pipe';
+import {Forecast} from '../../../models/forecast.model';
+import {LocationService} from '../../../services/location.service';
+import {ForecastService} from '../../../services/forecast.service';
+import {MToKmPipe} from '../../../pipes/m-to-km.pipe';
 
 @Component({
   selector: 'app-weather-board',
@@ -22,12 +22,11 @@ export class WeatherBoardComponent implements OnInit {
 
   ngOnInit(): void {
     this.locService.findCurrentLocation().subscribe(loc => {
-      console.log(loc);
-      console.log(loc.coords.latitude, loc.coords.longitude);
-      this.forecastService.getCurrentWeatherByLocation(loc.coords.latitude.toFixed(2), loc.coords.longitude.toFixed(2)).subscribe(
-        forecast => {
+      this.forecastService.getWeatherByLocation(loc.coords.latitude, loc.coords.longitude, 'weather').subscribe(
+        forecast  => {
+          console.log(loc.coords.latitude.toFixed(2), loc.coords.longitude.toFixed(2));
           this.forecast = forecast;
-          console.log(this.forecast);
+          console.log(forecast);
         }
       );
     });

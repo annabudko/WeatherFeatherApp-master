@@ -1,8 +1,7 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
-import {ForecastComponent} from './modules/forecast/forecast.component';
-import {StartComponent} from './start/start.component';
+import {StartComponent} from './modules/start/start.component';
 
 const routes: Routes = [
   {
@@ -16,7 +15,7 @@ const routes: Routes = [
   },
   {
     path: 'forecast',
-    component: ForecastComponent
+    loadChildren: () => import('./modules/forecast/forecast.module').then(m => m.ForecastModule)
   },
   {
     path: '**',

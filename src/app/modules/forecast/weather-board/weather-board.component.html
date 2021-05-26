@@ -1,0 +1,64 @@
+<!--<p>{{currentDate | date:'EEE, MMM d, h:mm:ss a z' }}</p>-->
+<div *ngIf="forecast">
+  <div class="flex weather-panel" *ngIf="forecast.current as fc">
+    <div class="separated-block main-info">
+      <div class="icon-block">
+        <img class="icon" src="https://openweathermap.org/img/wn/{{fc.weather.attr.icon}}@2x.png"/>
+        <p>{{fc.weather.attr.value}}</p>
+      </div>
+      <div class="column temperature-block">
+        <div class="flex space-between">
+          <div>{{fc.temperature.attr.min | temperature}}</div>
+          <div>{{fc.temperature.attr.max | temperature}}</div>
+        </div>
+        <div class="main-temp">
+          {{fc.temperature.attr.value | temperature}}
+        </div>
+        <div>
+          feels like {{fc.feels_like.attr.value | temperature}}
+        </div>
+      </div>
+    </div>
+    <div class="separated-block info-block">
+      <div class="column">
+        <div>Visibility:</div>
+        <div>Pressure:</div>
+        <div>Humidity:</div>
+      </div>
+      <div class="column">
+        <div>{{fc.visibility.attr.value | mkm }}</div>
+        <div>{{fc.pressure.attr.value | pressure}}</div>
+        <div>{{fc.humidity.attr.value}}{{fc.humidity.attr.unit}}</div>
+      </div>
+    </div>
+    <div class="separated-block text-centered">
+      <div class="flex column">
+        <p class="header">Wind</p>
+        <img class="small-icon" src="../../../../assets/images/wind.png"
+             [style.transform]="'rotate('+fc.wind.direction.attr.value+'deg)'">
+        <p class="medium">{{fc.wind.speed.attr.value | msToKms}}</p>
+        <p>{{fc.wind.direction.attr.name | lowercase}}</p>
+      </div>
+    </div>
+    <div class="separated-block">
+      <div>
+        <p class="header">Precipitations</p>
+        <div *ngIf="fc.precipitation as pr" class="info-block">
+          <div class="column">
+            <div>Type:</div>
+            <div *ngIf="pr.attr.mode != 'no'">Volume:</div>
+          </div>
+          <div class="column">
+            <div>{{pr.attr.mode}}</div>
+            <div *ngIf="pr.attr.mode != 'no'">{{pr.attr.value.concat('mm')}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="background-image" [ngSwitch]="fc.precipitation.attr.mode">
+      <img *ngSwitchCase="'no'">
+      <img *ngSwitchCase="'rain'">
+      <img *ngSwitchCase="'snow'">
+    </div>
+  </div>
+</div>

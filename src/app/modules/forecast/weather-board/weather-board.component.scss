@@ -1,12 +1,13 @@
-$blue:#3891C2;
+$blue: #3891C2;
 
-.flex {
+.flex, .separated-block, .info-block {
   display: flex;
 }
 
-.space-between{
+.space-between {
   justify-content: space-between;
 }
+
 .weather-panel {
   align-items: center;
   justify-content: center;
@@ -16,15 +17,17 @@ $blue:#3891C2;
   padding-right: 20px;
   margin-right: 20px;
   border-right: 1px solid #E5E5E5;
+  height: 150px;
+  align-items: center;
 }
 
 .column {
   flex-direction: column;
+  align-items: center;
 }
 
 .main-info {
   font-size: 11px;
-  align-items: center;
   text-transform: uppercase;
   font-variant: small-caps;
   text-align: center;
@@ -39,16 +42,19 @@ $blue:#3891C2;
 img {
 }
 
-.temperature-block{
+.temperature-block {
   width: 100px;
 }
+
 .info-block {
   color: rgba(0, 0, 0, 0.54);
-  div{
+
+  div {
     font-size: 15px;
     font-family: monospace;
   }
-  div:first-child{
+
+  div:first-child {
     margin-right: 10px;
   }
 }
@@ -57,8 +63,20 @@ img {
   margin-right: 20px;
 }
 
-.header{
+.header {
   font-family: monospace;
   font-size: 20px;
   color: $blue;
+}
+
+.small-icon {
+  width: 10px;
+}
+
+.text-centered {
+  text-align: center;
+}
+
+.medium{
+  font-size: 20px;
 }
