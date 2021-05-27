@@ -1,1 +1,5 @@
-<p>today works!</p>
+<div class="header">
+  <h1>Today</h1>
+  <p>{{currentDate | date:'MMM d, EEEE, h:mm a z' }}</p>
+</div>
+<app-weather-board [forecast]="this.forecast"></app-weather-board>
