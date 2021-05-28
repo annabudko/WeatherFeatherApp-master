@@ -1,0 +1,29 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  background-color: rgba(75, 140, 239, 0.83);
+  font-size: 25px;
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  width: fit-content;
+
+  a {
+    width: 250px;
+    text-align: center;
+    color: #fafafa;
+    text-transform: uppercase;
+    padding: 7px;
+    margin: 5px;
+    border-radius: 2px;
+
+    &.active {
+      background: #3A7DE2;
+      border-bottom: 3px solid #fafafa;
+    }
+  }
+
+}
+

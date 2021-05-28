@@ -1,0 +1,69 @@
+<div *ngIf="dailyForecast">
+  <div class="flex weather-panel" *ngIf="dailyForecast as dfc">
+    <div class="separated-block" *ngIf="showDate">
+      {{dfc.dt | unixToDate | date:'MMM d, EEEE'}}
+    </div>
+    <div class="separated-block main-info">
+      <div class="icon-block">
+        <img class="icon" src="https://openweathermap.org/img/wn/{{dfc.weather[0].icon}}@2x.png"/>
+        <p>{{dfc.weather[0].description}}</p>
+      </div>
+      <div *ngIf="dfc.temp" class="column temperature-block">
+        <div class="flex space-between">
+          <div>{{dfc.temp.max | temperature}}</div>
+          <div>{{dfc.temp.min | temperature}}</div>
+        </div>
+        <div class="main-temp">
+          {{dfc.temp.day | temperature}}
+        </div>
+        <div>
+          feels like {{dfc.feels_like.day | temperature}}
+        </div>
+      </div>
+    </div>
+    <div class="separated-block info-block">
+      <div class="column">
+        <div>Pressure:</div>
+        <div>Humidity:</div>
+        <div>Dew point:</div>
+      </div>
+      <div class="column">
+        <div>{{dfc.pressure | mkm }}</div>
+        <div>{{dfc.humidity | pressure}}%</div>
+        <div>{{dfc.dew_point | temperature}}</div>
+      </div>
+    </div>
+    <div class="separated-block text-centered">
+      <div class="flex column">
+        <p class="header">Wind</p>
+        <img class="small-icon" src="../../../../assets/images/wind.png"
+             [style.transform]="'rotate('+dfc.wind_deg+'deg)'">
+        <p class="medium">{{dfc.wind_speed | msToKms}}</p>
+        <p *ngIf="dfc.wind_gust">Wind gust: {{dfc.wind_gust}}</p>
+      </div>
+    </div>
+    <div class="separated-block">
+      <div>
+        <p class="header">Precipitations</p>
+        <div class="info-block">
+          <div class="column">
+            <div>Probability:</div>
+            <div *ngIf="dfc.rain || dfc.snow">Type:</div>
+            <div *ngIf="dfc.rain || dfc.snow">Volume:</div>
+          </div>
+          <div class="column">
+            <div>{{dfc.pop}}</div>
+            <div *ngIf="dfc.rain || dfc.snow">{{dfc.rain ? dfc.rain : dfc.snow}}</div>
+            <div *ngIf="dfc.rain">{{dfc.rain}}</div>
+            <div *ngIf="dfc.snow">{{dfc.snow}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="showPicture">
+      <img *ngIf="!dfc.rain && !dfc.snow">
+      <img *ngIf="dfc.rain">
+      <img *ngIf="dfc.snow">
+    </div>
+  </div>
+</div>
