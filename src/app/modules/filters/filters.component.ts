@@ -21,12 +21,6 @@ export class FiltersComponent implements OnInit {
         this.lat = loc.lat;
         this.lng = loc.lng;
       });
-    this.locationService.getCities()
-      .subscribe(data => {
-        this.cities = data;
-        console.log(data);
-      })
-    ;
   }
 
 }

@@ -4,6 +4,7 @@ import {FormControl} from '@angular/forms';
 import {ReplaySubject, Subject} from 'rxjs';
 import {take, takeUntil} from 'rxjs/operators';
 import {MatSelect} from '@angular/material/select';
+import {Cities} from '../../cities';
 
 @Component({
   selector: 'app-search-select',
@@ -12,8 +13,8 @@ import {MatSelect} from '@angular/material/select';
 })
 export class SearchSelectComponent implements OnInit, AfterViewInit, OnDestroy {
 
-  @Input() public elementName = 'element';
-  @Input() public elements: Element[] = [];
+  @Input() public elementName = 'City';
+  @Input() public elements: Element[] = Cities;
 
   @Output() selectedValue: any;
 

@@ -31,6 +31,7 @@ export class ForecastService {
       params = params.append('mode', this.mode);
     }
     const options = {params};
+    console.log(this.apiURL.concat(period));
     return this.http.get(this.apiURL.concat(period), options);
   }
 

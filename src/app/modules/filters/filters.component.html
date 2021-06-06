@@ -8,9 +8,8 @@
       <button routerLink="/forecast/today">Current location</button>
     </div>
     <div>
-      <app-search-select [elements]="cities" elementName="city">
-      </app-search-select>
-      <button>Specific city</button>
+      <app-search-select></app-search-select>
+      <button routerLink="/forecast/today/{{}}">Specific city</button>
     </div>
   </div>
 </div>

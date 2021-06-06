@@ -16,8 +16,6 @@ import {NgxMatSelectSearchModule} from 'ngx-mat-select-search';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
-import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
-import {InMemoryDataService} from './services/in-memory-data.service';
 
 
 @NgModule({
@@ -40,9 +38,6 @@ import {InMemoryDataService} from './services/in-memory-data.service';
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDpzsYhToczUTLVMwCBH_yYraHbDGBhE78'
     }),
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, { dataEncapsulation: false }
-    )
   ],
   providers: [
     {

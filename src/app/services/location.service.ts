@@ -7,7 +7,7 @@ import {HttpClient} from '@angular/common/http';
 })
 export class LocationService {
 
-  private citiesURL = 'assets/city.list.min.json';
+  private citiesURL = 'api/cities';
 
   constructor(private http: HttpClient) {
   }
@@ -28,8 +28,8 @@ export class LocationService {
     });
   }
 
-  public getCities(): Observable<any> {
-    return this.http.get(this.citiesURL);
+  public getCities(): Observable<any[]> {
+    return this.http.get<any[]>(this.citiesURL);
   }
 
 }
