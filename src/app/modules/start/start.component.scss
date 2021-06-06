@@ -1,9 +1,12 @@
+$background-colors: rgb(188, 154, 207) 20%, rgb(82, 111, 182) 80%;
+$light-blue: #3A7DE2;
+$dark-blue: #1d6be1;
+
 @mixin box-shadow($property) {
   -webkit-box-shadow: $property;
   -moz-box-shadow: $property;
   box-shadow: $property;
 }
-$background-colors: rgb(188, 154, 207) 20%, rgb(82, 111, 182) 80%;
 
 @mixin gradient($direction, $list) {
   background: -webkit-linear-gradient($direction, $list);
@@ -12,31 +15,36 @@ $background-colors: rgb(188, 154, 207) 20%, rgb(82, 111, 182) 80%;
   background: linear-gradient($direction, $list);
 }
 
-$light-blue: #3A7DE2;
-$dark-blue: #1d6be1;
-
 .cover {
   @include gradient(135deg, $background-colors);
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: $light-blue;
 }
 
 .centered {
-  background-image: url("../../../assets/images/weather-background.png");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 1700px;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  height: 100vh;
-  color: $light-blue;
+  align-items: center;
+}
+
+img {
+  position: absolute;
+  z-index: 1;
 }
 
 .greeting {
   text-align: center;
   margin-bottom: 10px;
-  font-size: 45px;
+  font-size: 48px;
+  line-height: 50px;
   font-weight: bold;
+  z-index: 2;
 }
 
 button {
@@ -46,7 +54,7 @@ button {
   background: $light-blue;
   border: 2px solid $light-blue;
   border-radius: 5px;
-  padding: 1vh 2vh;
+  padding: 5px 30px;
   width: fit-content;
   cursor: pointer;
   @include box-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));

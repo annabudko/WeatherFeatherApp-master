@@ -29,7 +29,7 @@
       </div>
       <div class="column">
         <div>{{dfc.pressure | mkm }}</div>
-        <div>{{dfc.humidity | pressure}}%</div>
+        <div>{{dfc.humidity | pressure}}</div>
         <div>{{dfc.dew_point | temperature}}</div>
       </div>
     </div>
@@ -60,10 +60,10 @@
         </div>
       </div>
     </div>
-    <div *ngIf="showPicture">
-      <img *ngIf="!dfc.rain && !dfc.snow">
-      <img *ngIf="dfc.rain">
-      <img *ngIf="dfc.snow">
-    </div>
+  </div>
+  <div *ngIf="showPicture" class="flex centered">
+    <img *ngIf="!dailyForecast.rain && !dailyForecast.snow" src="../../../../assets/images/backgrond-slideshow/no.png">
+    <img *ngIf="dailyForecast.rain" src="../../../../assets/images/backgrond-slideshow/rain.png">
+    <img *ngIf="dailyForecast.snow" src="../../../../assets/images/backgrond-slideshow/snow.png">
   </div>
 </div>

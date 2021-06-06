@@ -1,9 +1,12 @@
 <div class="cover">
-  <div class="centered">
+  <div class="centered" >
+    <img src="assets/images/weather-background.png" [@enter]="'in'">
     <div class="greeting">
-      <p>HELLO!</p>
-      <p>THIS IS WEATHER FEATHER</p>
+      <div>
+        <p>HELLO!</p>
+        <p>THIS IS WEATHER FEATHER</p>
+      </div>
+      <button routerLink="/filters">start</button>
     </div>
-    <button routerLink="/forecast/today">start</button>
   </div>
 </div>

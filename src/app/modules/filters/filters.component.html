@@ -1,8 +1,16 @@
-<h1>Select forecast type</h1>
 <div>
-  <div>
-  </div>
-  <div>
-    <google-map [center]="center"></google-map>
+  <p class="header-name">Select forecast type</p>
+  <div class="board">
+    <div>
+      <agm-map [latitude]="lat" [longitude]="lng">
+        <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+      </agm-map>
+      <button routerLink="/forecast/today">Current location</button>
+    </div>
+    <div>
+      <app-search-select [elements]="cities" elementName="city">
+      </app-search-select>
+      <button>Specific city</button>
+    </div>
   </div>
 </div>

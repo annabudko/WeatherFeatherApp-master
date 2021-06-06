@@ -11,14 +11,20 @@ $blue: #3891C2;
 .weather-panel {
   align-items: center;
   justify-content: center;
+  padding: 5px 0;
+
+  .separated-block:not(:last-child) {
+    border-right: 1px solid #E5E5E5;
+  }
 }
 
 .separated-block {
   padding-right: 20px;
   margin-right: 20px;
-  border-right: 1px solid #E5E5E5;
   height: 150px;
   align-items: center;
+  width: 180px;
+  justify-content: center;
 }
 
 .column {
@@ -76,4 +82,9 @@ $blue: #3891C2;
 
 .medium {
   font-size: 20px;
+}
+
+.centered {
+  align-items: center;
+  justify-content: center;
 }

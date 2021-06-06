@@ -8,13 +8,25 @@ import {LocationService} from '../../services/location.service';
 })
 export class FiltersComponent implements OnInit {
 
-  public center: google.maps.LatLngLiteral = {lat: 0, lng: 0};
+  public cities: any;
+  public lat = 0;
+  public lng = 0;
 
   constructor(public locationService: LocationService) {
   }
 
   ngOnInit(): void {
-    this.locationService.findCurrentLocation().subscribe(loc => this.center = loc);
+    this.locationService.findCurrentLocation()
+      .subscribe(loc => {
+        this.lat = loc.lat;
+        this.lng = loc.lng;
+      });
+    this.locationService.getCities()
+      .subscribe(data => {
+        this.cities = data;
+        console.log(data);
+      })
+    ;
   }
 
 }

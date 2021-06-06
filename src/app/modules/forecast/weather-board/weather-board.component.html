@@ -1,5 +1,5 @@
 <div *ngIf="forecast">
-  <div class="flex weather-panel" *ngIf="forecast.current as fc">
+  <div class="flex centered" *ngIf="forecast.current as fc">
     <div class="separated-block main-info">
       <div class="icon-block">
         <img class="icon" src="https://openweathermap.org/img/wn/{{fc.weather.attr.icon}}@2x.png"/>
@@ -54,10 +54,10 @@
         </div>
       </div>
     </div>
-    <div class="background-image" [ngSwitch]="fc.precipitation.attr.mode">
-      <img *ngSwitchCase="'no'">
-      <img *ngSwitchCase="'rain'">
-      <img *ngSwitchCase="'snow'">
-    </div>
+  </div>
+  <div class="flex centered background-image" [ngSwitch]="forecast.current.precipitation.attr.mode">
+    <img *ngSwitchCase="'no'" src="../../../../assets/images/backgrond-slideshow/no.png">
+    <img *ngSwitchCase="'rain'" src="../../../../assets/images/backgrond-slideshow/rain.png">
+    <img *ngSwitchCase="'snow'" src="../../../../assets/images/backgrond-slideshow/snow.png">
   </div>
 </div>

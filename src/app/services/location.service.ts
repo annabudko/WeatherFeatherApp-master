@@ -1,11 +1,15 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LocationService {
-  constructor() {
+
+  private citiesURL = 'assets/city.list.min.json';
+
+  constructor(private http: HttpClient) {
   }
 
   public findCurrentLocation(): Observable<any> {
@@ -23,4 +27,9 @@ export class LocationService {
       }
     });
   }
+
+  public getCities(): Observable<any> {
+    return this.http.get(this.citiesURL);
+  }
+
 }

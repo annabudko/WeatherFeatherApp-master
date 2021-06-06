@@ -9,8 +9,16 @@ import {StartComponent} from './modules/start/start.component';
 import {HttpErrorInterceptor} from './http-error.interceptor';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {XmlInterceptor} from './interceptors/xml.interceptor';
-import { FiltersComponent } from './modules/filters/filters.component';
-import {GoogleMapsModule} from '@angular/google-maps';
+import {FiltersComponent} from './modules/filters/filters.component';
+import {AgmCoreModule} from '@agm/core';
+import { SearchSelectComponent } from './components/search-select/search-select.component';
+import {NgxMatSelectSearchModule} from 'ngx-mat-select-search';
+import {ReactiveFormsModule} from '@angular/forms';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
+import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
+import {InMemoryDataService} from './services/in-memory-data.service';
+
 
 @NgModule({
   declarations: [
@@ -18,13 +26,23 @@ import {GoogleMapsModule} from '@angular/google-maps';
     PageNotFoundComponent,
     StartComponent,
     FiltersComponent,
+    SearchSelectComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
-    GoogleMapsModule
+    NgxMatSelectSearchModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDpzsYhToczUTLVMwCBH_yYraHbDGBhE78'
+    }),
+    HttpClientInMemoryWebApiModule.forRoot(
+      InMemoryDataService, { dataEncapsulation: false }
+    )
   ],
   providers: [
     {

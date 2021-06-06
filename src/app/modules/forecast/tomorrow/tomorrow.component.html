@@ -2,4 +2,4 @@
   <h1>Tomorrow</h1>
   <p *ngIf="tomorrowForecast">{{tomorrowForecast.dt | unixToDate | date:'MMM d, EEEE, h:mm a z' }}</p>
 </div>
-<app-daily-weather-board [dailyForecast]="tomorrowForecast" [showDate]="false"></app-daily-weather-board>
+<app-daily-weather-board [dailyForecast]="tomorrowForecast" [showDate]="false" [showPicture]="true"></app-daily-weather-board>
