@@ -1,4 +1,4 @@
-<div *ngIf="forecast">
+<div class="board" *ngIf="forecast" [@enter]="'in'">
   <div class="flex centered" *ngIf="forecast.current as fc">
     <div class="separated-block main-info">
       <div class="icon-block">

@@ -6,8 +6,9 @@ import {ForecastService} from '../../../services/forecast.service';
 @Component({
   selector: 'app-tomorrow',
   templateUrl: './tomorrow.component.html',
-  styleUrls: ['./tomorrow.component.scss']
+  styleUrls: ['./tomorrow.component.scss'],
 })
+
 export class TomorrowComponent implements OnInit {
 
   public unit = 'metric';

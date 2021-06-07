@@ -1,4 +1,4 @@
-<div *ngIf="dailyForecast">
+<div *ngIf="dailyForecast" [@enter]="'in'">
   <div class="flex centered weather-panel" *ngIf="dailyForecast as dfc">
     <div class="separated-block" *ngIf="showDate">
       {{dfc.dt | unixToDate | date:'MMM d, EEEE'}}
