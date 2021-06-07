@@ -12,3 +12,9 @@ export const Cities: Element[] = [
   {id: 9, name: 'Kiev'},
   {id: 10, name: 'Tokyo'}
 ];
+
+export const Units: Element[] = [
+  {id: 0, name: 'metric'},
+  {id: 1, name: 'standard'},
+  {id: 2, name: 'imperial'}
+];

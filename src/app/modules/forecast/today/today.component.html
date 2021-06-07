@@ -1,5 +1,6 @@
+<app-filters (selectedUnitEvent)="setUnitFilter($event)" (selectedCityEvent)="setCityFilter($event)" ></app-filters>
 <div class="header">
   <h1>Today</h1>
   <p>{{currentDate | date:'MMM d, EEEE, h:mm a z' }}</p>
 </div>
-<app-weather-board [forecast]="this.forecast"></app-weather-board>
+<app-weather-board [forecast]="this.forecast" [unit]="unit"></app-weather-board>

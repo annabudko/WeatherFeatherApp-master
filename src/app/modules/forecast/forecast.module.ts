@@ -12,9 +12,14 @@ import {MToKmPipe} from '../../pipes/m-to-km.pipe';
 import {PressurePipe} from '../../pipes/pressure.pipe';
 import {TemperaturePipe} from '../../pipes/temperature.pipe';
 import {SpeedPipe} from '../../pipes/speed.pipe';
-import {MsToKmsPipe} from '../../pipes/ms-to-kms.pipe';
 import {DailyWeatherBoardComponent} from './daily-weather-board/daily-weather-board.component';
 import {UnixToDatePipe} from '../../pipes/unix-to-date.pipe';
+import {FiltersComponent} from './filters/filters.component';
+import {MatSelectModule} from '@angular/material/select';
+import {NgxMatSelectSearchModule} from 'ngx-mat-select-search';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {SearchSelectComponent} from '../../components/search-select/search-select.component';
 
 @NgModule({
   declarations: [
@@ -25,16 +30,22 @@ import {UnixToDatePipe} from '../../pipes/unix-to-date.pipe';
     MainComponent,
     WeatherBoardComponent,
     DailyWeatherBoardComponent,
+    FiltersComponent,
+    SearchSelectComponent,
     MToKmPipe,
     PressurePipe,
     TemperaturePipe,
     SpeedPipe,
-    MsToKmsPipe,
     UnixToDatePipe,
   ],
   imports: [
     CommonModule,
-    ForecastRoutingModule
+    ForecastRoutingModule,
+    MatSelectModule,
+    NgxMatSelectSearchModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    FormsModule,
   ]
 })
 export class ForecastModule {

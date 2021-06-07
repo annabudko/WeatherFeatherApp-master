@@ -5,49 +5,49 @@
         <img class="icon" src="https://openweathermap.org/img/wn/{{fc.weather.attr.icon}}@2x.png"/>
         <p>{{fc.weather.attr.value}}</p>
       </div>
-      <div class="column temperature-block">
+      <div class="flex-column temperature-block">
         <div class="flex space-between">
-          <div>{{fc.temperature.attr.min | temperature}}</div>
-          <div>{{fc.temperature.attr.max | temperature}}</div>
+          <div>{{fc.temperature.attr.min | temperature:unit}}</div>
+          <div>{{fc.temperature.attr.max | temperature:unit}}</div>
         </div>
         <div class="main-temp">
-          {{fc.temperature.attr.value | temperature}}
+          {{fc.temperature.attr.value | temperature:unit}}
         </div>
         <div>
-          feels like {{fc.feels_like.attr.value | temperature}}
+          feels like {{fc.feels_like.attr.value | temperature:unit}}
         </div>
       </div>
     </div>
     <div class="separated-block info-block">
-      <div class="column">
+      <div class="flex-column">
         <div>Visibility:</div>
         <div>Pressure:</div>
         <div>Humidity:</div>
       </div>
-      <div class="column">
+      <div class="flex-column">
         <div>{{fc.visibility.attr.value | mkm }}</div>
         <div>{{fc.pressure.attr.value | pressure}}</div>
         <div>{{fc.humidity.attr.value}}{{fc.humidity.attr.unit}}</div>
       </div>
     </div>
     <div class="separated-block text-centered">
-      <div class="flex column">
-        <p class="header">Wind</p>
+      <div class="flex flex-column centered">
+        <p class="header medium">Wind</p>
         <img class="small-icon" src="../../../../assets/images/wind.png"
              [style.transform]="'rotate('+fc.wind.direction.attr.value+'deg)'">
-        <p class="medium">{{fc.wind.speed.attr.value | msToKms}}</p>
+        <p class="medium">{{fc.wind.speed.attr.value | speed: unit}}</p>
         <p>{{fc.wind.direction.attr.name | lowercase}}</p>
       </div>
     </div>
     <div class="separated-block">
       <div>
         <p class="header">Precipitations</p>
-        <div *ngIf="fc.precipitation as pr" class="info-block">
-          <div class="column">
+        <div class="flex info-block" *ngIf="fc.precipitation as pr">
+          <div class="flex-column">
             <div>Type:</div>
             <div *ngIf="pr.attr.mode != 'no'">Volume:</div>
           </div>
-          <div class="column">
+          <div class="flex-column">
             <div>{{pr.attr.mode}}</div>
             <div *ngIf="pr.attr.mode != 'no'">{{pr.attr.value.concat('mm')}}</div>
           </div>

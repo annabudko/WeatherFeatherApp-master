@@ -11,6 +11,7 @@ import {MToKmPipe} from '../../../pipes/m-to-km.pipe';
 export class WeatherBoardComponent implements OnInit {
 
   @Input() public forecast: Forecast | undefined;
+  @Input() public unit = 'metric';
 
   constructor() {
   }

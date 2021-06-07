@@ -9,13 +9,7 @@ import {StartComponent} from './modules/start/start.component';
 import {HttpErrorInterceptor} from './http-error.interceptor';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {XmlInterceptor} from './interceptors/xml.interceptor';
-import {FiltersComponent} from './modules/filters/filters.component';
 import {AgmCoreModule} from '@agm/core';
-import { SearchSelectComponent } from './components/search-select/search-select.component';
-import {NgxMatSelectSearchModule} from 'ngx-mat-select-search';
-import {ReactiveFormsModule} from '@angular/forms';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatSelectModule} from '@angular/material/select';
 
 
 @NgModule({
@@ -23,18 +17,12 @@ import {MatSelectModule} from '@angular/material/select';
     AppComponent,
     PageNotFoundComponent,
     StartComponent,
-    FiltersComponent,
-    SearchSelectComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
-    NgxMatSelectSearchModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatSelectModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDpzsYhToczUTLVMwCBH_yYraHbDGBhE78'
     }),
@@ -51,7 +39,8 @@ import {MatSelectModule} from '@angular/material/select';
       multi: true
     },
   ],
-  exports: [],
+  exports: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -11,6 +11,8 @@ import {ForecastService} from '../../../services/forecast.service';
 export class TodayComponent implements OnInit {
 
   public currentDate = new Date();
+  public unit = 'metric';
+  public city = '';
   public forecast: Forecast | undefined;
 
   constructor(private locService: LocationService,
@@ -18,14 +20,35 @@ export class TodayComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.locService.findCurrentLocation().subscribe(loc => {
-      this.forecastService.getWeatherByLocation(loc.coords.latitude, loc.coords.longitude, 'weather').subscribe(
+    this.getForecast();
+  }
+
+  public setUnitFilter(unit: string): void {
+    this.unit = unit;
+    this.getForecast();
+  }
+
+  public setCityFilter(city: string): void {
+    this.city = city;
+    this.getForecast();
+  }
+
+  public getForecast(): void {
+    if (this.city !== '') {
+      this.locService.findCurrentLocation();
+      this.forecastService.getWeatherByCityName(this.city, 'weather', this.unit).subscribe(
         forecast => {
-          console.log(forecast);
           this.forecast = forecast;
         }
       );
-    });
+    } else {
+      this.locService.findCurrentLocation().subscribe(loc => {
+        this.forecastService.getWeatherByLocation(loc.coords.latitude, loc.coords.longitude, 'weather', this.unit).subscribe(
+          forecast => {
+            this.forecast = forecast;
+          }
+        );
+      });
+    }
   }
-
 }

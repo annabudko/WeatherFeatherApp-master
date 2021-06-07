@@ -1,5 +1,6 @@
+<app-filters (selectedUnitEvent)="setUnitFilter($event)" (selectedCityEvent)="setCityFilter($event)" [showCityFilter]="false"></app-filters>
 <div class="header">
   <h1>Tomorrow</h1>
-  <p *ngIf="tomorrowForecast">{{tomorrowForecast.dt | unixToDate | date:'MMM d, EEEE, h:mm a z' }}</p>
+  <p *ngIf="forecast">{{forecast.dt | unixToDate | date:'MMM d, EEEE, h:mm a z' }}</p>
 </div>
-<app-daily-weather-board [dailyForecast]="tomorrowForecast" [showDate]="false" [showPicture]="true"></app-daily-weather-board>
+<app-daily-weather-board [dailyForecast]="forecast" [showDate]="false" [showPicture]="true" [unit]="unit"></app-daily-weather-board>

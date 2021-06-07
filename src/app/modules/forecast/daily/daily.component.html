@@ -1,3 +1,4 @@
-<div *ngFor="let fc of dailyForecast">
-  <app-daily-weather-board [dailyForecast]="fc"></app-daily-weather-board>
+<app-filters (selectedUnitEvent)="setUnitFilter($event)" (selectedCityEvent)="setCityFilter($event)" [showCityFilter]="false"></app-filters>
+<div *ngFor="let fc of forecast">
+  <app-daily-weather-board [dailyForecast]="fc" [unit]="unit"></app-daily-weather-board>
 </div>

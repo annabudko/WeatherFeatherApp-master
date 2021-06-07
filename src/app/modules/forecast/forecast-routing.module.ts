@@ -11,6 +11,11 @@ const routes: Routes = [
     component: MainComponent,
     children: [
       {
+        path: '',
+        redirectTo: 'today',
+        pathMatch: 'full'
+      },
+      {
         path: 'today',
         component: TodayComponent
       },

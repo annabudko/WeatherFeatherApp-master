@@ -16,14 +16,16 @@ export class ForecastService {
   constructor(private http: HttpClient) {
   }
 
-  public getWeatherByLocation(lat: number, lon: number, period: string): Observable<any> {
+  public getWeatherByLocation(lat: number, lon: number, period: string, unit?: string): Observable<any> {
 
+    if (unit) {
+      this.unit = unit;
+    }
     let params = new HttpParams()
       .set('lat', lat.toFixed(2).toString())
       .set('lon', lon.toFixed(2).toString())
       .set('units', this.unit)
       .set('appid', this.apiKey);
-
 
     if (period === 'onecall') {
       params = params.append('exclude', this.exclude);
@@ -31,15 +33,20 @@ export class ForecastService {
       params = params.append('mode', this.mode);
     }
     const options = {params};
-    console.log(this.apiURL.concat(period));
+
     return this.http.get(this.apiURL.concat(period), options);
   }
 
-  public getWeatherByCityName(cityName: string, period: string, stateCode?: string, countryCode?: string): Observable<any> {
+  public getWeatherByCityName(cityName: string, period: string, stateCode?: string, countryCode?: string, unit?: string): Observable<any> {
 
+    if (unit) {
+      this.unit = unit;
+    }
     let params = cityName;
+
     params = stateCode ? `${params},${stateCode}` : params;
     params = countryCode ? `${params},${countryCode}` : params;
+
     const options =
       {
         params: new HttpParams()

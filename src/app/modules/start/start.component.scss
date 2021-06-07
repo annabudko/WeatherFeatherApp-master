@@ -2,6 +2,7 @@ $background-colors: rgb(188, 154, 207) 20%, rgb(82, 111, 182) 80%;
 $light-blue: #3A7DE2;
 $dark-blue: #1d6be1;
 
+
 @mixin box-shadow($property) {
   -webkit-box-shadow: $property;
   -moz-box-shadow: $property;
@@ -19,18 +20,7 @@ $dark-blue: #1d6be1;
   @include gradient(135deg, $background-colors);
   height: 100%;
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   color: $light-blue;
-}
-
-.centered {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 
 img {

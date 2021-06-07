@@ -1,0 +1,6 @@
+<div class="flex flex-column filters">
+  <app-search-select [elements]="Units" [elementName]="'Unit'"
+                     (selectedValueEvent)="getUnit($event)"></app-search-select>
+  <app-search-select [elements]="Cities" [elementName]="'City'" (selectedValueEvent)="getCity($event)"
+                     *ngIf="showCityFilter"></app-search-select>
+</div>

@@ -10,19 +10,35 @@ import {ForecastService} from '../../../services/forecast.service';
 })
 export class DailyComponent implements OnInit {
 
-  public dailyForecast: DailyForecast[] | undefined;
+  public unit = 'metric';
+  public city = '';
+  public forecast: DailyForecast[] | undefined;
 
   constructor(private locService: LocationService,
               private forecastService: ForecastService) {
   }
 
   ngOnInit(): void {
+    this.getForecast();
+  }
+
+  public setUnitFilter(unit: string): void {
+    this.unit = unit;
+    this.getForecast();
+  }
+
+  public setCityFilter(city: string): void {
+    this.city = city;
+    this.getForecast();
+  }
+
+  public getForecast(): void {
     this.locService.findCurrentLocation().subscribe(loc => {
       this.forecastService.getWeatherByLocation(loc.coords.latitude, loc.coords.longitude, 'onecall').subscribe(
         forecast => {
           console.log(forecast);
-          this.dailyForecast = forecast.daily;
-          console.log(this.dailyForecast);
+          this.forecast = forecast.daily;
+          console.log(this.forecast);
         }
       );
     });
