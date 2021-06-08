@@ -2,29 +2,13 @@ import {Component, OnInit} from '@angular/core';
 import {DailyForecast} from '../../../models/daily-forecast.model';
 import {LocationService} from '../../../services/location.service';
 import {ForecastService} from '../../../services/forecast.service';
-import {animate, query, stagger, style, transition, trigger} from '@angular/animations';
+import {enterAnimation} from '../../../animation';
 
 @Component({
   selector: 'app-daily',
   templateUrl: './daily.component.html',
   styleUrls: ['./daily.component.scss'],
-  animations: [
-    trigger('listAnimation', [
-      transition('void => *', [
-        query(':leave', [
-          stagger(100, [
-            animate('0.5s', style({opacity: 0}))
-          ])
-        ], {optional: true}),
-        query(':enter', [
-          style({opacity: 0}),
-          stagger(100, [
-            animate('0.5s', style({opacity: 1}))
-          ])
-        ], {optional: true})
-      ])
-    ])
-  ],
+  animations: [enterAnimation]
 })
 export class DailyComponent implements OnInit {
 
@@ -54,7 +38,7 @@ export class DailyComponent implements OnInit {
     this.locService.findCurrentLocation().subscribe(loc => {
       this.forecastService.getWeatherByLocation(loc.coords.latitude, loc.coords.longitude, 'onecall').subscribe(
         forecast => {
-          this.forecast = forecast.daily;
+          this.forecast = forecast.daily.slice(1);
         }
       );
     });

@@ -1,8 +1,25 @@
 import {
   trigger, animateChild, group,
-  transition, animate, style, query
+  transition, animate, style, query, state, stagger
 } from '@angular/animations';
 
+export const enterAnimation = trigger('enter',
+  [
+    state('in', style({display: 'block'})),
+    transition('void => *', [
+      query(':leave', [
+        stagger(100, [
+          animate('0.5s', style({opacity: 0}))
+        ])
+      ], {optional: true}),
+      query(':enter', [
+        style({opacity: 0}),
+        stagger(100, [
+          animate('0.5s', style({opacity: 1}))
+        ])
+      ], {optional: true})
+    ])
+  ]);
 // Routable animations
 export const slideInAnimation =
   trigger('routeAnimations', [

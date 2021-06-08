@@ -1,6 +1,6 @@
 <app-filters (selectedUnitEvent)="setUnitFilter($event)" (selectedCityEvent)="setCityFilter($event)"
              [showCityFilter]="false"></app-filters>
-<div class="forecast-list" *ngFor="let fc of forecast" [@listAnimation]="forecast.length">
+<div class="forecast-list" *ngFor="let fc of forecast">
   <app-daily-weather-board [dailyForecast]="fc" [unit]="unit"></app-daily-weather-board>
 </div>
 
