@@ -16,7 +16,6 @@ const routes: Routes = [
   {
     path: 'forecast',
     loadChildren: () => import('./modules/forecast/forecast.module').then(m => m.ForecastModule),
-    data: {animation: 'ForecastPage'}
   },
   {
     path: '**',

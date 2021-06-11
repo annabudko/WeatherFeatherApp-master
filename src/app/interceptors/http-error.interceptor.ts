@@ -20,7 +20,7 @@ export class HttpErrorInterceptor implements HttpInterceptor {
 
       catchError((error: HttpErrorResponse) => {
 
-        let errorMessage = '';
+        let errorMessage: string;
 
         if (error.error instanceof ErrorEvent) {
           errorMessage = `Error: ${error.error.message}`;
@@ -29,7 +29,7 @@ export class HttpErrorInterceptor implements HttpInterceptor {
         }
 
         window.alert(errorMessage);
-        console.log(errorMessage);
+
         return throwError(errorMessage);
       })
     );

@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {LocationService} from '../../../services/location.service';
 import {Element} from '../../../models/element';
-import {Cities, Units} from '../../../dataSets';
+import {Cities, Units} from '../../../../assets/dataSets';
 
 @Component({
   selector: 'app-filters',
@@ -9,9 +9,6 @@ import {Cities, Units} from '../../../dataSets';
   styleUrls: ['./filters.component.scss']
 })
 export class FiltersComponent implements OnInit {
-
-  public selectedCity = '';
-  public selectedUnit = 'metric';
 
   public Units: Element[] = Units;
   public Cities: Element[] = Cities;

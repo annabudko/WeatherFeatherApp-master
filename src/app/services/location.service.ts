@@ -1,15 +1,12 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
-import {HttpClient} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LocationService {
 
-  private citiesURL = 'api/cities';
-
-  constructor(private http: HttpClient) {
+  constructor() {
   }
 
   public findCurrentLocation(): Observable<any> {
@@ -26,10 +23,6 @@ export class LocationService {
         observer.error('Unsupported Browser');
       }
     });
-  }
-
-  public getCities(): Observable<any[]> {
-    return this.http.get<any[]>(this.citiesURL);
   }
 
 }

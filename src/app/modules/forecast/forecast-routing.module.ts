@@ -26,7 +26,6 @@ const routes: Routes = [
       {
         path: 'daily',
         component: DailyComponent,
-        data: {animation: 'FilterPage'}
       }
     ]
   }

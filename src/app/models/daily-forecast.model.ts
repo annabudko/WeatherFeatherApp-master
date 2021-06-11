@@ -1,3 +1,6 @@
+import {Temperature} from './temperature';
+import {Weather} from './weather';
+
 export interface DailyForecast {
   dt: number;
   weather: Weather[];
@@ -13,20 +16,4 @@ export interface DailyForecast {
   pop: number;
   rain?: number;
   snow?: number;
-}
-
-interface Temperature {
-  day: number;
-  night: number;
-  eve: number;
-  morn: number;
-  min: number;
-  max: number;
-}
-
-interface Weather {
-  id: number;
-  main: string;
-  description: string;
-  icon: string;
 }

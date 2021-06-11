@@ -3,13 +3,12 @@ import {BrowserModule} from '@angular/platform-browser';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {StartComponent} from './modules/start/start.component';
-import {HttpErrorInterceptor} from './http-error.interceptor';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {XmlInterceptor} from './interceptors/xml.interceptor';
-import {AgmCoreModule} from '@agm/core';
+import {HttpErrorInterceptor} from './interceptors/http-error.interceptor';
 
 
 @NgModule({
@@ -23,9 +22,6 @@ import {AgmCoreModule} from '@agm/core';
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
-    AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyDpzsYhToczUTLVMwCBH_yYraHbDGBhE78'
-    }),
   ],
   providers: [
     {

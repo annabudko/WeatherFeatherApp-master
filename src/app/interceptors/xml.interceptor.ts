@@ -22,10 +22,10 @@ export class XmlInterceptor implements HttpInterceptor {
     return next.handle(req).pipe(map(event => {
       // @ts-ignore
       if (event instanceof HttpResponse && event.headers.get('content-type').indexOf('application/xml') >= 0) {
-        const options = { // set up the default options
-          textKey: 'text', // tag name for text nodes
-          attrKey: 'attr', // tag for attr groups
-          cdataKey: 'cdata', // tag for cdata nodes (ignored if mergeCDATA is true)
+        const options = {
+          textKey: 'text',
+          attrKey: 'attr',
+          cdataKey: 'cdata',
         };
         event = event.clone({body: this.ngxXmlToJsonService.xmlToJson(event.body, options)});
       } else { // @ts-ignore

@@ -1,14 +1,13 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {HttpClient, HttpParams} from '@angular/common/http';
+import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ForecastService {
 
-  private apiURL = 'https://api.openweathermap.org/data/2.5/';
-  private apiKey = '38aee4dd3ef50715f5644f4f7a63e31d';
   private unit = 'metric';
   private mode = 'xml';
   private exclude = 'current,minutely,hourly,alerts';
@@ -25,7 +24,7 @@ export class ForecastService {
       .set('lat', lat.toFixed(2).toString())
       .set('lon', lon.toFixed(2).toString())
       .set('units', this.unit)
-      .set('appid', this.apiKey);
+      .set('appid', environment.API_KEY);
 
     if (period === 'onecall') {
       params = params.append('exclude', this.exclude);
@@ -34,7 +33,7 @@ export class ForecastService {
     }
     const options = {params};
 
-    return this.http.get(this.apiURL.concat(period), options);
+    return this.http.get(environment.API_URL.concat(period), options);
   }
 
   public getWeatherByCityName(cityName: string, period: string, stateCode?: string, countryCode?: string, unit?: string): Observable<any> {
@@ -52,10 +51,10 @@ export class ForecastService {
         params: new HttpParams()
           .set('q', params)
           .set('units', this.unit)
-          .set('appid', this.apiKey)
+          .set('appid', environment.API_KEY)
           .set('mode', this.mode)
       };
-    return this.http.get(this.apiURL.concat(period), options);
+    return this.http.get(environment.API_URL.concat(period), options);
   }
 
 }

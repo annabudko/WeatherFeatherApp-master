@@ -1,4 +1,4 @@
-import {Element} from './models/element';
+import {Element} from '../app/models/element';
 
 export const Cities: Element[] = [
   {id: 1, name: 'Hong Kong'},

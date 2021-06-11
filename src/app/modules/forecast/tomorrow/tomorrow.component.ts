@@ -35,7 +35,6 @@ export class TomorrowComponent implements OnInit {
 
   public getForecast(): void {
     if (this.city !== '') {
-      this.locService.findCurrentLocation();
       this.forecastService.getWeatherByCityName(this.city, 'onecall', this.unit).subscribe(
         forecast => {
           this.forecast = forecast.daily[1];
