@@ -13,7 +13,6 @@ export class FiltersComponent implements OnInit {
   public Units: Element[] = Units;
   public Cities: Element[] = Cities;
 
-
   @Input() showCityFilter = true;
 
   @Output() selectedUnitEvent = new EventEmitter<string>();
