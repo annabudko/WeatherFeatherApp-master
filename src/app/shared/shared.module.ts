@@ -13,9 +13,7 @@ import {FiltersComponent} from './components/filters/filters.component';
 import {DailyWeatherBoardComponent} from './components/daily-weather-board/daily-weather-board.component';
 import {SearchSelectComponent} from './components/search-select/search-select.component';
 import {WeatherBoardComponent} from './components/weather-board/weather-board.component';
-import {TranslateModule} from '@ngx-translate/core';
-import {SelectLanguageComponent} from './components/select-language/select-language.component';
-import {LocaleDatePipe} from './pipes/locale-date.pipe';
+import {LocaleModule} from './locale.module';
 
 @NgModule({
   declarations: [
@@ -28,10 +26,8 @@ import {LocaleDatePipe} from './pipes/locale-date.pipe';
     TemperaturePipe,
     SpeedPipe,
     UnixToDatePipe,
-    LocaleDatePipe,
     FiltersComponent,
     DailyWeatherBoardComponent,
-    SelectLanguageComponent,
   ],
   exports: [
     CommonModule,
@@ -40,11 +36,9 @@ import {LocaleDatePipe} from './pipes/locale-date.pipe';
     WeatherBoardComponent,
     FiltersComponent,
     UnixToDatePipe,
-    LocaleDatePipe,
     FiltersComponent,
     DailyWeatherBoardComponent,
-    SelectLanguageComponent,
-    TranslateModule
+    LocaleModule
   ],
   imports: [
     CommonModule,
@@ -53,7 +47,7 @@ import {LocaleDatePipe} from './pipes/locale-date.pipe';
     NgxMatSelectSearchModule,
     FormsModule,
     ReactiveFormsModule,
-    TranslateModule
+    LocaleModule
   ]
 })
 export class SharedModule {

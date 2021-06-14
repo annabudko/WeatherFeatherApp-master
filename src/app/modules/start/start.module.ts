@@ -3,15 +3,16 @@ import {CommonModule} from '@angular/common';
 
 import {StartRoutingModule} from './start-routing.module';
 import {StartComponent} from './start.component';
-import {SharedModule} from '../../shared/shared.module';
+import {LocaleModule} from '../../shared/locale.module';
 
 
 @NgModule({
-  declarations: [StartComponent],
+  declarations: [
+    StartComponent],
   imports: [
     CommonModule,
     StartRoutingModule,
-    SharedModule
+    LocaleModule,
   ]
 })
 export class StartModule {
