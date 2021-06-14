@@ -1,14 +1,14 @@
 <div *ngIf="dailyForecast" [@enter]="'in'">
   <div class="flex centered weather-panel" *ngIf="dailyForecast as dfc">
     <div class="separated-block" *ngIf="showDate">
-      {{dfc.dt | unixToDate | date:'MMM d, EEEE'}}
+      {{dfc.dt | unixToDate | localeDate:'MMM d, EEEE'}}
     </div>
     <div class="separated-block main-info">
       <div class="icon-block">
-        <img class="icon" src="https://openweathermap.org/img/wn/{{dfc.weather[0].icon}}@2x.png"/>
+        <img class="icon" src="{{imgSrc.API_IMG_LOC + dfc.weather[0].icon}}@2x.png"/>
         <p>{{dfc.weather[0].description}}</p>
       </div>
-      <div *ngIf="dfc.temp" class="column temperature-block">
+      <div *ngIf="dfc.temp" class="flex-column temperature-block">
         <div class="flex space-between">
           <div>{{dfc.temp.max | temperature:unit}}</div>
           <div>{{dfc.temp.min | temperature:unit}}</div>
@@ -17,45 +17,50 @@
           {{dfc.temp.day | temperature:unit}}
         </div>
         <div>
-          feels like {{dfc.feels_like.day | temperature:unit}}
+          {{"FEELS LIKE" | translate}} {{dfc.feels_like.day | temperature:unit}}
         </div>
       </div>
     </div>
     <div class="separated-block info-block">
-      <div class="column">
-        <div>Pressure:</div>
-        <div>Humidity:</div>
-        <div>Dew point:</div>
+      <div class="flex-column">
+        <div>{{"PRESSURE" | translate | titlecase}}:</div>
+        <div>{{"HUMIDITY" | translate | titlecase}}:</div>
+        <div>{{"DEW POINT" | translate | titlecase}}:</div>
       </div>
       <div class="flex-column">
-        <div>{{dfc.pressure | mkm }}</div>
-        <div>{{dfc.humidity | pressure}}</div>
+        <div>{{dfc.pressure | mkm }} {{'KM' | translate}}</div>
+        <div>{{dfc.humidity | pressure}} {{'MBAR' | translate}}</div>
         <div>{{dfc.dew_point | temperature:unit}}</div>
       </div>
     </div>
     <div class="separated-block text-centered">
       <div class="flex flex-column centered">
-        <p class="header">Wind</p>
+        <p class="header">{{"WIND" | translate | titlecase}}</p>
         <img class="small-icon" src="../../../../assets/images/wind.png"
              [style.transform]="'rotate('+dfc.wind_deg+'deg)'">
-        <p class="medium">{{dfc.wind_speed | speed: unit}}</p>
-        <p *ngIf="dfc.wind_gust">Wind gust: {{dfc.wind_gust}}</p>
+        <p class="medium">{{dfc.wind_speed | speed: unit}} {{(unit == "imperial" ? "MH" : "KMH")| translate}}</p>
+        <p *ngIf="dfc.wind_gust">{{"WIND GUST" | translate | titlecase}}: {{dfc.wind_gust}}</p>
       </div>
     </div>
     <div class="separated-block">
       <div>
-        <p class="header">Precipitations</p>
+        <p class="header">{{"PRECIPITATIONS" | translate | titlecase}}</p>
         <div class="flex info-block">
           <div class="flex-column">
-            <div>Probability:</div>
-            <div *ngIf="dfc.rain || dfc.snow">Type:</div>
-            <div *ngIf="dfc.rain || dfc.snow">Volume:</div>
+            <div>{{"PROBABILITY" | translate | titlecase}}:</div>
+            <div *ngIf="dfc.rain || dfc.snow">{{"TYPE" | translate | titlecase}}:</div>
+            <div *ngIf="dfc.rain || dfc.snow">{{"VOLUME" | translate | titlecase}}:</div>
           </div>
           <div class="flex-column">
             <div>{{dfc.pop}}</div>
-            <div *ngIf="dfc.rain || dfc.snow">{{dfc.rain ? dfc.rain : dfc.snow}}</div>
-            <div *ngIf="dfc.rain">{{dfc.rain}}</div>
-            <div *ngIf="dfc.snow">{{dfc.snow}}</div>
+            <div *ngIf="dfc.rain">
+              <div>{{"RAIN" | translate}}</div>
+              <div>{{dfc.rain}}</div>
+            </div>
+            <div *ngIf="dfc.snow">
+              <div>{{"SNOW" | translate}}</div>
+              <div>{{dfc.snow}}</div>
+            </div>
           </div>
         </div>
       </div>

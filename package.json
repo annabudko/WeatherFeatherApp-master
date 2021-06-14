@@ -7,7 +7,11 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "i18n:init": "ngx-translate-extract --input ./src --output ./src/assets/locale/en.json --key-as-default-value --replace --format json",
+    "i18n:extract:ua": "ngx-translate-extract --input ./src --output ./src/assets/locale/ua.json --clean --format json",
+    "i18n:extract:en": "ngx-translate-extract --input ./src --output ./src/assets/locale/en.json --clean --format json",
+    "i18n:extract:ru": "ngx-translate-extract --input ./src --output ./src/assets/locale/ru.json --clean --format json"
   },
   "private": true,
   "dependencies": {
@@ -22,6 +26,8 @@
     "@angular/platform-browser": "~11.2.9",
     "@angular/platform-browser-dynamic": "~11.2.9",
     "@angular/router": "~11.2.9",
+    "@ngx-translate/core": "^13.0.0",
+    "@ngx-translate/http-loader": "^6.0.0",
     "angular-in-memory-web-api": "^0.11.0",
     "express": "^4.17.1",
     "ngx-mat-select-search": "^3.3.0",
@@ -39,6 +45,7 @@
     "@angular/cli": "~11.2.8",
     "@angular/compiler-cli": "~11.2.9",
     "@angular/localize": "^11.2.9",
+    "@biesbjerg/ngx-translate-extract": "^7.0.4",
     "@types/googlemaps": "^3.39.13",
     "@types/jasmine": "~3.6.0",
     "@types/node": "^12.11.1",

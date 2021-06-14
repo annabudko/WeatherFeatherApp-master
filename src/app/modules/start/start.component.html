@@ -1,12 +1,13 @@
+<app-select-language></app-select-language>
 <div class="flex flex-column cover centered">
   <div class="flex flex-column centered">
     <img src="assets/images/weather-background.png" [@enter]="'in'">
     <div class="greeting">
       <div>
-        <p>HELLO!</p>
-        <p>THIS IS WEATHER FEATHER</p>
+        <p>{{'HELLO'| translate}}!</p>
+        <p>{{'GREETING'| translate}}</p>
       </div>
-      <button routerLink="/forecast">start</button>
+      <button routerLink="/forecast">{{'START'| translate}}</button>
     </div>
   </div>
 </div>

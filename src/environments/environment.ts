@@ -4,8 +4,11 @@
 
 export const environment = {
   production: false,
+  locales: ['en', 'ru'],
+  defaultLocale: 'en',
   API_URL: 'https://api.openweathermap.org/data/2.5/',
-  API_KEY: '38aee4dd3ef50715f5644f4f7a63e31d'
+  API_KEY: '38aee4dd3ef50715f5644f4f7a63e31d',
+  API_IMG_LOC: 'https://openweathermap.org/img/wn/'
 };
 
 /*

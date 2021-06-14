@@ -16,7 +16,7 @@ export class LocationService {
           (position) => {
             observer.next(position);
             observer.complete();
-          },
+          } ,
           (error) => observer.error(error)
         );
       } else {

@@ -2,7 +2,7 @@
   <div class="flex centered" *ngIf="forecast.current as fc">
     <div class="separated-block main-info">
       <div class="icon-block">
-        <img class="icon" src="https://openweathermap.org/img/wn/{{fc.weather.attr.icon}}@2x.png"/>
+        <img class="icon" src="{{imgSrc.API_IMG_LOC + fc.weather.attr.icon}}@2x.png"/>
         <p>{{fc.weather.attr.value}}</p>
       </div>
       <div class="flex-column temperature-block">
@@ -14,41 +14,48 @@
           {{fc.temperature.attr.value | temperature:unit}}
         </div>
         <div>
-          feels like {{fc.feels_like.attr.value | temperature:unit}}
+          {{"FEELS LIKE" | translate}} {{fc.feels_like.attr.value | temperature:unit}}
         </div>
       </div>
     </div>
     <div class="separated-block info-block">
       <div class="flex-column">
-        <div>Visibility:</div>
-        <div>Pressure:</div>
-        <div>Humidity:</div>
+        <div>{{"VISIBILITY" | translate | titlecase}}:</div>
+        <div>{{"PRESSURE" | translate | titlecase}}:</div>
+        <div>{{"HUMIDITY" | translate | titlecase}}:</div>
       </div>
       <div class="flex-column">
-        <div>{{fc.visibility.attr.value | mkm }}</div>
-        <div>{{fc.pressure.attr.value | pressure}}</div>
+        <div>{{fc.visibility.attr.value | mkm }} {{'KM' | translate}}</div>
+        <div>{{fc.pressure.attr.value | pressure}} {{'MBAR' | translate}}</div>
         <div>{{fc.humidity.attr.value}}{{fc.humidity.attr.unit}}</div>
       </div>
     </div>
     <div class="separated-block text-centered">
       <div class="flex flex-column centered">
-        <p class="header">Wind</p>
+        <p class="header">{{"WIND" | translate | titlecase}}</p>
         <img class="small-icon" src="../../../../assets/images/wind.png"
              [style.transform]="'rotate('+fc.wind.direction.attr.value+'deg)'">
-        <p class="medium">{{fc.wind.speed.attr.value | speed: unit}}</p>
-        <p>{{fc.wind.direction.attr.name | lowercase}}</p>
+        <p
+          class="medium">{{fc.wind.speed.attr.value | speed: unit}}
+          {{(unit == "imperial" ? "MH" : "KMH") | translate}}
+        </p>
+        <p>{{fc.wind.direction.attr.code | uppercase}}</p>
       </div>
     </div>
     <div class="separated-block">
       <div>
-        <p class="header">Precipitations</p>
+        <p class="header">{{"PRECIPITATIONS" | translate | titlecase}}</p>
         <div class="flex info-block" *ngIf="fc.precipitation as pr">
           <div class="flex-column">
-            <div>Type:</div>
-            <div *ngIf="pr.attr.mode != 'no'">Volume:</div>
+            <div>{{"TYPE" | translate | titlecase}}:</div>
+            <div *ngIf="pr.attr.mode != 'no'">{{"VOLUME" | translate | titlecase}}:</div>
           </div>
           <div class="flex-column">
-            <div>{{pr.attr.mode}}</div>
+            <div [ngSwitch]="pr.attr.mode">
+              <div *ngSwitchCase="'no'">{{"NO" | translate}}</div>
+              <div *ngSwitchCase="'rain'">{{"RAIN" | translate}}</div>
+              <div *ngSwitchCase="'snow'">{{"SNOW" | translate}}</div>
+            </div>
             <div *ngIf="pr.attr.mode != 'no'">{{pr.attr.value.concat('mm')}}</div>
           </div>
         </div>

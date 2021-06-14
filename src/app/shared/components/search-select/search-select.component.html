@@ -1,7 +1,8 @@
 <mat-form-field>
-  <mat-select [(ngModel)]="selectedValue" placeholder="{{elementName| titlecase}}" #singleSelect>
+  <mat-select [(ngModel)]="selectedValue" placeholder="{{elementName | titlecase}}" #singleSelect>
     <mat-option>
-      <ngx-mat-select-search placeholderLabel="Find {{elementName}}..." noEntriesFoundLabel="No matches"
+      <ngx-mat-select-search placeholderLabel="{{'FIND' | translate | titlecase}} {{elementName | lowercase}}"
+                             noEntriesFoundLabel="{{'NO MATCHES' | translate}}"
                              [formControl]="filterCtrl"></ngx-mat-select-search>
     </mat-option>
     <mat-option *ngFor="let el of filteredElements | async" [value]="el" (click)="selectValue(selectedValue)">

@@ -16,12 +16,11 @@ import {SharedModule} from '../../shared/shared.module';
     DailyComponent,
     MenuComponent,
     MainComponent,
-
   ],
   imports: [
     CommonModule,
     ForecastRoutingModule,
-    SharedModule
+    SharedModule,
   ]
 })
 export class ForecastModule {

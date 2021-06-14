@@ -6,7 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class PressurePipe implements PipeTransform {
 
   transform(value: number, ...args: unknown[]): unknown {
-    return value.toString().concat(' mbar');
+    return value.toString();
   }
 
 }

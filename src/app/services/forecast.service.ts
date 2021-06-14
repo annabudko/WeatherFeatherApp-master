@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {environment} from '../../environments/environment';
+import {TranslateService} from '@ngx-translate/core';
 
 @Injectable({
   providedIn: 'root'
@@ -12,48 +13,40 @@ export class ForecastService {
   private mode = 'xml';
   private exclude = 'current,minutely,hourly,alerts';
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private translateService: TranslateService) {
   }
 
   public getWeatherByLocation(lat: number, lon: number, period: string, unit?: string): Observable<any> {
 
-    if (unit) {
-      this.unit = unit;
-    }
+    this.unit = unit ?? 'metric';
+
     let params = new HttpParams()
       .set('lat', lat.toFixed(2).toString())
       .set('lon', lon.toFixed(2).toString())
       .set('units', this.unit)
-      .set('appid', environment.API_KEY);
+      .set('appid', environment.API_KEY)
+      .set('lang', this.translateService.currentLang);
 
-    if (period === 'onecall') {
-      params = params.append('exclude', this.exclude);
-    } else {
-      params = params.append('mode', this.mode);
-    }
+    (period === 'onecall') ? params = params.append('exclude', this.exclude) : params = params.append('mode', this.mode);
+
     const options = {params};
-
     return this.http.get(environment.API_URL.concat(period), options);
   }
 
-  public getWeatherByCityName(cityName: string, period: string, stateCode?: string, countryCode?: string, unit?: string): Observable<any> {
+  public getWeatherByCityName(cityName: string, period: string, unit?: string): Observable<any> {
 
-    if (unit) {
-      this.unit = unit;
-    }
-    let params = cityName;
+    this.unit = unit ?? 'metric';
 
-    params = stateCode ? `${params},${stateCode}` : params;
-    params = countryCode ? `${params},${countryCode}` : params;
+    let params = new HttpParams()
+      .set('q', cityName)
+      .set('units', this.unit)
+      .set('appid', environment.API_KEY)
+      .set('lang', this.translateService.currentLang);
 
-    const options =
-      {
-        params: new HttpParams()
-          .set('q', params)
-          .set('units', this.unit)
-          .set('appid', environment.API_KEY)
-          .set('mode', this.mode)
-      };
+    (period === 'onecall') ? params = params.append('exclude', this.exclude) : params = params.append('mode', this.mode);
+
+    const options = {params};
+
     return this.http.get(environment.API_URL.concat(period), options);
   }
 
