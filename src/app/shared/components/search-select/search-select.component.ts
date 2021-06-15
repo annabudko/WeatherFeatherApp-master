@@ -1,9 +1,10 @@
-import {AfterViewInit, Component, Input, OnDestroy, OnInit, Output, ViewChild, EventEmitter} from '@angular/core';
+import {AfterViewInit, Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild} from '@angular/core';
 import {Element} from '../../../models/element';
 import {FormControl} from '@angular/forms';
 import {ReplaySubject, Subject} from 'rxjs';
 import {take, takeUntil} from 'rxjs/operators';
 import {MatSelect} from '@angular/material/select';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-search-select',
@@ -12,13 +13,13 @@ import {MatSelect} from '@angular/material/select';
 })
 export class SearchSelectComponent implements OnInit, AfterViewInit, OnDestroy {
 
-  @Input() public elementName = 'City';
+  @Input() public elementName: any;
   @Input() public elements: Element[] = [];
 
   @Output() selectedValueEvent = new EventEmitter<string>();
 
   public filterCtrl: FormControl = new FormControl();
-
+  public currentLg = this.translateService.currentLang;
   public filteredElements: ReplaySubject<any[]> = new ReplaySubject<any[]>(1);
 
   // @ts-ignore
@@ -28,17 +29,18 @@ export class SearchSelectComponent implements OnInit, AfterViewInit, OnDestroy {
 
   protected onDestroy = new Subject<void>();
 
-  constructor() {
+  constructor(public translateService: TranslateService) {
     this.selectedValue = this.elements[0];
   }
 
   ngOnInit(): void {
     this.filteredElements.next(this.elements.slice());
     this.filterCtrl.valueChanges
-      .pipe(takeUntil(this.onDestroy))
-      .subscribe(() => {
-        this.filterElements();
-      });
+        .pipe(takeUntil(this.onDestroy))
+        .subscribe(() => {
+          this.filterElements();
+        });
+    console.log(this.translateService.currentLang);
   }
 
   ngAfterViewInit(): void {
@@ -70,10 +72,23 @@ export class SearchSelectComponent implements OnInit, AfterViewInit, OnDestroy {
     } else {
       search = search.toLowerCase();
     }
-
-    this.filteredElements.next(
-      this.elements.filter(element => element.name.toLowerCase().indexOf(search) > -1)
-    );
+    switch (this.currentLg) {
+      case 'en':
+        this.filteredElements.next(
+            this.elements.filter(element => element.name.toLowerCase().indexOf(search) > -1)
+        );
+        break;
+      case 'ua':
+        this.filteredElements.next(
+            this.elements.filter(element => element.nameUA.toLowerCase().indexOf(search) > -1)
+        );
+        break;
+      case 'ru':
+        this.filteredElements.next(
+            this.elements.filter(element => element.nameRU.toLowerCase().indexOf(search) > -1)
+        );
+        break;
+    }
   }
 
   public selectValue(value: Element): void {

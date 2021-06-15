@@ -21,6 +21,8 @@
 	"VOLUME": "volume",
 	"RAIN": "rain",
 	"SNOW": "snow",
+	"UNIT": "unit",
+	"CITY": "city",
 	"FIND": "find",
 	"NO MATCHES": "no matches",
 	"VISIBILITY": "visibility",

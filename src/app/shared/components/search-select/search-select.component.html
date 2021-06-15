@@ -6,7 +6,11 @@
                              [formControl]="filterCtrl"></ngx-mat-select-search>
     </mat-option>
     <mat-option *ngFor="let el of filteredElements | async" [value]="el" (click)="selectValue(selectedValue)">
-      {{el.name}}
+      <div [ngSwitch]="currentLg">
+        <div *ngSwitchCase="'en'">{{el.name}}</div>
+        <div *ngSwitchCase="'ua'">{{el.nameUA}}</div>
+        <div *ngSwitchCase="'ru'">{{el.nameRU}}</div>
+      </div>
     </mat-option>
   </mat-select>
 </mat-form-field>
