@@ -1,0 +1,4 @@
+<mat-select #langSelect (selectionChange)="translateService.use(langSelect.value)" class="lang-select"
+            [(value)]="selectedLang">
+  <mat-option *ngFor="let lang of translateService.getLangs()" [value]="lang">{{ lang }}</mat-option>
+</mat-select>

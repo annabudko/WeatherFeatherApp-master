@@ -1,0 +1,13 @@
+mat-select {
+  position: absolute;
+  background: #ffffff;
+  padding: 6px;
+  font-size: 20px;
+  border-radius: 8px;
+  margin: 15px;
+  width: 70px;
+}
+
+mat-select, mat-option {
+  text-transform: uppercase;
+}
