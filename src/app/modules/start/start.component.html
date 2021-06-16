@@ -7,7 +7,7 @@
         <p>{{'HELLO'| translate}}!</p>
         <p>{{'GREETING'| translate}}</p>
       </div>
-      <button routerLink="/forecast">{{'START'| translate}}</button>
+      <button routerLink="/forecast" (click)="this.locationService.findCurrentLocation()">{{'START'| translate}}</button>
     </div>
   </div>
 </div>

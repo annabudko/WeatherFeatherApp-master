@@ -15,10 +15,10 @@ export class SearchSelectComponent implements OnInit, AfterViewInit, OnDestroy {
 
   @Input() public elementName: any;
   @Input() public elements: Element[] = [];
-
   @Output() selectedValueEvent = new EventEmitter<string>();
 
   public filterCtrl: FormControl = new FormControl();
+
   public currentLg = this.translateService.currentLang;
   public filteredElements: ReplaySubject<any[]> = new ReplaySubject<any[]>(1);
 
@@ -35,12 +35,12 @@ export class SearchSelectComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnInit(): void {
     this.filteredElements.next(this.elements.slice());
+    this.selectedValue = this.elements[0];
     this.filterCtrl.valueChanges
-        .pipe(takeUntil(this.onDestroy))
-        .subscribe(() => {
-          this.filterElements();
-        });
-    console.log(this.translateService.currentLang);
+      .pipe(takeUntil(this.onDestroy))
+      .subscribe(() => {
+        this.filterElements();
+      });
   }
 
   ngAfterViewInit(): void {
@@ -75,17 +75,17 @@ export class SearchSelectComponent implements OnInit, AfterViewInit, OnDestroy {
     switch (this.currentLg) {
       case 'en':
         this.filteredElements.next(
-            this.elements.filter(element => element.name.toLowerCase().indexOf(search) > -1)
+          this.elements.filter(element => element.name.toLowerCase().indexOf(search) > -1)
         );
         break;
       case 'ua':
         this.filteredElements.next(
-            this.elements.filter(element => element.nameUA.toLowerCase().indexOf(search) > -1)
+          this.elements.filter(element => element.nameUA.toLowerCase().indexOf(search) > -1)
         );
         break;
       case 'ru':
         this.filteredElements.next(
-            this.elements.filter(element => element.nameRU.toLowerCase().indexOf(search) > -1)
+          this.elements.filter(element => element.nameRU.toLowerCase().indexOf(search) > -1)
         );
         break;
     }

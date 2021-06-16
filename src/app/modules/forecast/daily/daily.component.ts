@@ -35,8 +35,8 @@ export class DailyComponent implements OnInit {
   }
 
   public getForecast(): void {
-    this.locService.findCurrentLocation().subscribe(loc => {
-      this.forecastService.getWeatherByLocation(loc.coords.latitude, loc.coords.longitude, 'onecall').subscribe(
+    this.locService.locationSubject.subscribe(loc => {
+      this.forecastService.getWeatherByLocation(loc.lat, loc.long, 'onecall').subscribe(
         forecast => {
           this.forecast = forecast.daily.slice(1);
         }

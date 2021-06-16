@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {LocationService} from '../../../services/location.service';
 import {Element} from '../../../models/element';
 import {Cities, Units} from '../../../../assets/dataSets';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-filters',
@@ -18,7 +19,7 @@ export class FiltersComponent implements OnInit {
   @Output() selectedUnitEvent = new EventEmitter<string>();
   @Output() selectedCityEvent = new EventEmitter<string>();
 
-  constructor(public locationService: LocationService) {
+  constructor(public locationService: LocationService, public translateService: TranslateService) {
   }
 
   ngOnInit(): void {

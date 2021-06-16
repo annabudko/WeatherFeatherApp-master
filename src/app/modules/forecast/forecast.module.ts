@@ -21,7 +21,8 @@ import {SharedModule} from '../../shared/shared.module';
     CommonModule,
     ForecastRoutingModule,
     SharedModule,
-  ]
+  ],
+  providers: []
 })
 export class ForecastModule {
 }

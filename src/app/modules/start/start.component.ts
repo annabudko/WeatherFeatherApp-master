@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {animate, state, style, transition, trigger} from '@angular/animations';
+import {LocationService} from '../../services/location.service';
 
 @Component({
   selector: 'app-start',
@@ -18,7 +19,7 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
 })
 export class StartComponent implements OnInit {
 
-  constructor() {
+  constructor(public locationService: LocationService ) {
   }
 
   ngOnInit(): void {

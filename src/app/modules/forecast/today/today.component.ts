@@ -41,8 +41,8 @@ export class TodayComponent implements OnInit {
         }
       );
     } else {
-      this.locService.findCurrentLocation().subscribe(loc => {
-        this.forecastService.getWeatherByLocation(loc.coords.latitude, loc.coords.longitude, 'weather', this.unit).subscribe(
+      this.locService.locationSubject.subscribe(loc => {
+        this.forecastService.getWeatherByLocation(loc.lat, loc.long, 'weather', this.unit).subscribe(
           forecast => {
             this.forecast = forecast;
           }

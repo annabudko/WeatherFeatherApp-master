@@ -40,8 +40,9 @@ export class TomorrowComponent implements OnInit {
           this.forecast = forecast.daily[1];
         });
     } else {
-      this.locService.findCurrentLocation().subscribe(loc => {
-        this.forecastService.getWeatherByLocation(loc.coords.latitude, loc.coords.longitude, 'onecall', this.unit).subscribe(
+      this.locService.locationSubject.subscribe(loc => {
+        console.log(loc);
+        this.forecastService.getWeatherByLocation(loc.lat, loc.long, 'onecall', this.unit).subscribe(
           forecast => {
             this.forecast = forecast.daily[1];
           }

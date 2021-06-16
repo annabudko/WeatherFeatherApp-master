@@ -8,7 +8,8 @@ export const environment = {
   defaultLocale: 'en',
   API_URL: 'https://api.openweathermap.org/data/2.5/',
   API_KEY: '38aee4dd3ef50715f5644f4f7a63e31d',
-  API_IMG_LOC: 'https://openweathermap.org/img/wn/'
+  API_IMG_LOC: 'https://openweathermap.org/img/wn/',
+  API_GOOGLE_APIS: 'https://maps.googleapis.com/maps/api/geocode/json'
 };
 
 /*

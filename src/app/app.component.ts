@@ -20,7 +20,7 @@ export class AppComponent {
     this.translateService.use(environment.defaultLocale);
 
     const browserLang = translateService.getBrowserLang();
-    translateService.use(browserLang.match(/en|fr/) ? browserLang : 'en');
+    translateService.use(browserLang.match(/en|ua/) ? browserLang : 'en');
 
     registerLocaleData(localeEn, 'en');
     registerLocaleData(localeUk, 'ua');

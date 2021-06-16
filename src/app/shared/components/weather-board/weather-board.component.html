@@ -30,16 +30,16 @@
         <div>{{fc.humidity.attr.value}}{{fc.humidity.attr.unit}}</div>
       </div>
     </div>
-    <div class="separated-block text-centered">
+    <div class="separated-block text-centered" *ngIf="fc.wind">
       <div class="flex flex-column centered">
         <p class="header">{{"WIND" | translate | titlecase}}</p>
-        <img class="small-icon" src="../../../../assets/images/wind.png"
+        <img *ngIf="fc.wind.direction.attr" class="small-icon" src="../../../../assets/images/wind.png"
              [style.transform]="'rotate('+fc.wind.direction.attr.value+'deg)'">
         <p
           class="medium">{{fc.wind.speed.attr.value | speed: unit}}
           {{(unit == "imperial" ? "MH" : "KMH") | translate}}
         </p>
-        <p>{{fc.wind.direction.attr.code | uppercase}}</p>
+        <p *ngIf="fc.wind.direction.attr">{{fc.wind.direction.attr.code | uppercase}}</p>
       </div>
     </div>
     <div class="separated-block">

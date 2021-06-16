@@ -16,4 +16,5 @@ import {LocaleModule} from '../../shared/locale.module';
   ]
 })
 export class StartModule {
+
 }
