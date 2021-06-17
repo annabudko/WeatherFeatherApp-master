@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {DailyForecast} from '../../../models/daily-forecast.model';
+import {DailyForecast} from '../../models/daily-forecast.model';
 import {enterAnimation} from '../../../animation';
 import {environment} from '../../../../environments/environment';
 

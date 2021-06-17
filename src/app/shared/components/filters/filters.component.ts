@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {LocationService} from '../../../services/location.service';
-import {Element} from '../../../models/element';
+import {Element} from '../../models/element';
 import {Cities, Units} from '../../../../assets/dataSets';
 import {TranslateService} from '@ngx-translate/core';
 
@@ -11,8 +11,14 @@ import {TranslateService} from '@ngx-translate/core';
 })
 export class FiltersComponent implements OnInit {
 
+  public cityName = this.locationService.cityNameSubject.value;
   public Units: Element[] = Units;
-  public Cities: Element[] = Cities;
+  public Cities: Element[] = [{
+    id: Cities.length,
+    name: this.cityName,
+    nameRU: this.cityName,
+    nameUA: this.cityName
+  }, ...Cities];
 
   @Input() showCityFilter = true;
 

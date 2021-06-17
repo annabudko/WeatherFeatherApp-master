@@ -11,4 +11,5 @@ export interface CurrentWeather {
   clouds: SimpleObject;
   visibility: SimpleObject;
   precipitation: SimpleObject;
+  city: SimpleObject;
 }

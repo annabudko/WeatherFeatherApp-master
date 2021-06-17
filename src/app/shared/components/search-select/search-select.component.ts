@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild} from '@angular/core';
-import {Element} from '../../../models/element';
+import {Element} from '../../models/element';
 import {FormControl} from '@angular/forms';
 import {ReplaySubject, Subject} from 'rxjs';
 import {take, takeUntil} from 'rxjs/operators';

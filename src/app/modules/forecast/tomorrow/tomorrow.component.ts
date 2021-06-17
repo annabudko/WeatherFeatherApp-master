@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {DailyForecast} from '../../../models/daily-forecast.model';
+import {DailyForecast} from '../../../shared/models/daily-forecast.model';
 import {LocationService} from '../../../services/location.service';
 import {ForecastService} from '../../../services/forecast.service';
 

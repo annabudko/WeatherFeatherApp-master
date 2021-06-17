@@ -26,7 +26,6 @@ export class ForecastService {
       .set('units', this.unit)
       .set('appid', environment.API_KEY)
       .set('lang', this.translateService.currentLang);
-
     (period === 'onecall') ? params = params.append('exclude', this.exclude) : params = params.append('mode', this.mode);
 
     const options = {params};

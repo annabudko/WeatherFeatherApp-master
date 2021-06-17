@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Forecast} from '../../../models/forecast.model';
+import {Forecast} from '../../../shared/models/forecast.model';
 import {LocationService} from '../../../services/location.service';
 import {ForecastService} from '../../../services/forecast.service';
 
@@ -44,6 +44,7 @@ export class TodayComponent implements OnInit {
       this.locService.locationSubject.subscribe(loc => {
         this.forecastService.getWeatherByLocation(loc.lat, loc.long, 'weather', this.unit).subscribe(
           forecast => {
+            console.log(forecast);
             this.forecast = forecast;
           }
         );
